@@ -1,8 +1,8 @@
 {
-    "id": "grails-petclinic-clickstart",
-    "name": "Grails PetClinic",
+    "id": "romaMoneyGrails",
+    "name": "Roma Monye Grails",
     "source": "git://github.com/CloudBees-community/grails-petclinic-clickstart.git",
-    "description": "Deploy the Grails PetClinic sample application bound to a CloudBees MySQL Database instance",
+    "description": "Deploy the Roma Money Grailsbound to a CloudBees MySQL Database instance",
     "doc-url": "https://github.com/CloudBees-community/grails-petclinic-clickstart/blob/master/README.md",
     "app-package": "http://repository-community.forge.cloudbees.com/snapshot/localdomain/localhost/grails-petclinic-clickstart/0.1-SNAPSHOT/grails-petclinic-clickstart-0.1-SNAPSHOT.war",
     "icon": "https://raw.github.com/CloudBees-community/grails-petclinic-clickstart/master/clickstart-icon.png",

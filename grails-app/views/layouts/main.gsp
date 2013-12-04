@@ -17,7 +17,25 @@
 		<r:layoutResources/>
 	</head>
 	<body>
-		<header><g:img dir="images" file="banner-graphic.png"/></header>
+
+	<body>
+		<div id="grailsLogo" role="banner"><a class="home" href="${createLink(uri: '/')}"><img style="width:30px" src="${resource(dir: 'images', file: 'home.png')}" alt="Roma Money Grails"/></a></div>
+		<g:if test="${controllerName != 'viewSource'}">
+		<aside>
+			<h2><g:link controller="viewSource" action="controllerAndView"
+			            params="[viewPath:viewPath,controllerClass:controllerClass,viewName:(viewName ?: actionName),controllerName:controllerName]">View/edit source for this page</g:link></h2>
+		</aside>
+		</g:if>
+
+		<g:layoutBody/>
+		<div class="footer" role="contentinfo"></div>
+		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+		<g:javascript library="application"/>
+		<r:layoutResources />
+	</body>
+
+
+<%--		<header><g:img dir="images" file="banner-graphic.png"/></header>
 
 		<g:if test="${controllerName != 'viewSource'}">
 		<aside>
@@ -36,4 +54,6 @@
 		</footer>
 		<r:layoutResources/>
 	</body>
+--%>
+
 </html>

@@ -1,6 +1,7 @@
 import org.apache.log4j.ConsoleAppender
 import org.apache.log4j.PatternLayout
 
+grails.project.groupId = br.com.romalopes.romamoneygrails // change this to alter the default package name and Maven publishing destination
 grails.project.groupId = appName
 grails.mime.file.extensions = true
 grails.mime.use.accept.header = false
@@ -57,3 +58,42 @@ log4j = {
 	      'org.hibernate',
 	      'net.sf.ehcache.hibernate'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'br.com.romalopes.romamoneygrails.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'br.com.romalopes.romamoneygrails.UserRole'
+grails.plugin.springsecurity.authority.className = 'br.com.romalopes.romamoneygrails.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'**/**':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll'],
+	'/login/**':          			  ['permitAll'],
+	 '/logout/**':         			  ['permitAll']
+//	'/**/category/*':				  ['ROLE_USER'],
+//	'/**/bankaccount/*':			  ['ROLE_USER'],
+//	'/**/groupcategory/*':			  ['ROLE_USER'],
+//	'/**/transaction/*':			  ['ROLE_USER'],
+//	'/**/user/*':			  		  ['ROLE_USER'],
+//	'/user/**':              		  ['ROLE_ADMIN']
+]
+
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'br.com.romalopes.romamoneygrails.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'br.com.romalopes.romamoneygrails.UserRole'
+grails.plugin.springsecurity.authority.className = 'br.com.romalopes.romamoneygrails.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll']
+]
+

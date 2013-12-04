@@ -2,9 +2,37 @@ import org.grails.samples.PetType
 import org.grails.samples.Speciality
 import org.grails.samples.Vet
 
+import br.com.romalopes.romamoneygrails.BankAccount
+import br.com.romalopes.romamoneygrails.Role
+import br.com.romalopes.romamoneygrails.User
+import br.com.romalopes.romamoneygrails.UserRole
+
+
 class BootStrap {
 
 	def init = { servletContext ->
+
+		if(User.count() == 0) {
+			def testUser = new User(username: 'me', password: 'password')
+			testUser.save(flush: true)
+
+			User userCida = new User(username:"cydynha@msn.com", password: 'foobar')
+			if (!userCida.save()){
+				log.error "Could not save user!!"
+				log.error "${userCida.errors}"
+			}
+		}
+
+		def testUser = new User(username: 'me', password: 'password')
+		testUser.save(flush: true)
+
+		User userCida = new User(username:"cydynha@msn.com", password: 'foobar')
+		if (!userCida.save()){
+			log.error "Could not save user!!"
+			log.error "${userCida.errors}"
+		}
+
+
 		if (!Speciality.count()) {
 			def radiology = new Speciality(name: 'radiology').save(failOnError: true)
 			def surgery =   new Speciality(name: 'surgery').save(failOnError: true)

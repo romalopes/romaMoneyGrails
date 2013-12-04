@@ -7,7 +7,8 @@ class UrlMappings {
 			}
 		}
 
-		"/"(controller: 'clinic')
+		"/clinic"(controller: 'clinic')
+		"/"		 (controller: 'main')
 
 		"500"(view: '/error')
 	}
