@@ -8,7 +8,6 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-groupCategory" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -26,7 +25,7 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'groupCategory.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="group_type" title="${message(code: 'groupCategory.group_type.label', default: 'Grouptype')}" />
+						<g:sortableColumn property="groupType" title="${message(code: 'groupCategory.groupType.label', default: 'Grouptype')}" />
 					
 						<g:sortableColumn property="image" title="${message(code: 'groupCategory.image.label', default: 'Image')}" />
 					
@@ -38,7 +37,7 @@
 					
 						<td><g:link action="show" id="${groupCategoryInstance.id}">${fieldValue(bean: groupCategoryInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: groupCategoryInstance, field: "group_type")}</td>
+						<td>${fieldValue(bean: groupCategoryInstance, field: "groupType")}</td>
 					
 						<td>${fieldValue(bean: groupCategoryInstance, field: "image")}</td>
 					

@@ -50,6 +50,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.bankAccounts}">
+				<li class="fieldcontain">
+					<span id="bankAccounts-label" class="property-label"><g:message code="user.bankAccounts.label" default="Bank Accounts" /></span>
+					
+						<g:each in="${userInstance.bankAccounts}" var="b">
+						<span class="property-value" aria-labelledby="bankAccounts-label"><g:link controller="bankAccount" action="show" id="${b.id}">${b?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.accountExpired}">
 				<li class="fieldcontain">
 					<span id="accountExpired-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
@@ -64,17 +75,6 @@
 					<span id="accountLocked-label" class="property-label"><g:message code="user.accountLocked.label" default="Account Locked" /></span>
 					
 						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${userInstance?.accountLocked}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.bankAccounts}">
-				<li class="fieldcontain">
-					<span id="bankAccounts-label" class="property-label"><g:message code="user.bankAccounts.label" default="Bank Accounts" /></span>
-					
-						<g:each in="${userInstance.bankAccounts}" var="b">
-						<span class="property-value" aria-labelledby="bankAccounts-label"><g:link controller="bankAccount" action="show" id="${b.id}">${b?.encodeAsHTML()}</g:link></span>
-						</g:each>
 					
 				</li>
 				</g:if>

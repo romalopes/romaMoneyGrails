@@ -17,7 +17,7 @@ class BankAccount {
     static constraints = {
 		name(blank:false, nullable: false, size:6..50)
 		description(nullable:true, blank:true, maxSize:300)
-        balance(nullable:false)  
+        balance(nullable:true)  
         user(nullable:false)  
     }  
     String toString(){  

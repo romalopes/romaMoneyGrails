@@ -1,10 +1,17 @@
 package br.com.romalopes.romamoneygrails
 
+import org.springframework.security.access.annotation.Secured
+import org.springframework.dao.DataIntegrityViolationException
+
 class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
+
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name = user.getUsername(); //get logged in username
+        log.info("\n\n\n ${name} \n\n\n\n")
         redirect(action: "list", params: params)
     }
 
@@ -13,25 +20,26 @@ class UserController {
         [userInstanceList: User.list(params), userInstanceTotal: User.count()]
     }
 
+    @Secured(['permitAll'])
     def create() {
-        def userInstance = new User(params)
-		if (!userInstance.save(flush: true)) {
-			render(view: "create", model: [userInstance: userInstance])
-			return
-		}
-
-		def roleUser = Role.find(authority: 'ROLE_USER')
-		UserRole.create userInstance , roleUser, true
-		
+        [userInstance: new User(params)]
     }
 
+    @Secured(['permitAll'])
     def save() {
         def userInstance = new User(params)
+
         if (!userInstance.save(flush: true)) {
             render(view: "create", model: [userInstance: userInstance])
             return
         }
+        else {
+            log.info("User created")
+        }
 
+        def roleUser = Role.findByAuthority("ROLE_USER")
+        
+        UserRole.create userInstance , roleUser, true
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
         redirect(action: "show", id: userInstance.id)
     }
@@ -95,8 +103,14 @@ class UserController {
             return
         }
 
-        userInstance.delete(flush: true)
-        flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
-        redirect(action: "list")
+        try {
+            userInstance.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
+        }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "show", id: id)
+        }
     }
 }

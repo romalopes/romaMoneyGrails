@@ -16,12 +16,17 @@ class User {
 		
 	static hasMany = [bankAccounts: BankAccount]
 	
-	//static transients = ['springSecurityService']
+    String toString(){  
+          return username 
+    }  
+
+	static transients = ['springSecurityService']
 
 	static constraints = {
-		username email:true, blank: false, unique: true, size:3..50
+		username blank: false, unique: true
 		password blank: false
 		currentAccount(nullable: true)
+		bankAccounts(nullable:true)
 	}
 
 	static mapping = {
@@ -32,9 +37,9 @@ class User {
 		UserRole.findAllByUser(this).collect { it.role } as Set
 	}
 
-//	def beforeInsert() {
-//		encodePassword()
-//	}
+	def beforeInsert() {
+		encodePassword()
+	}
 
 	def beforeUpdate() {
 		if (isDirty('password')) {
@@ -42,11 +47,7 @@ class User {
 		}
 	}
 
-//	protected void encodePassword() {
-//		password = springSecurityService.encodePassword(password)
-//	}
-
-	String toString() {
-		return username
+	protected void encodePassword() {
+		password = springSecurityService.encodePassword(password)
 	}
 }

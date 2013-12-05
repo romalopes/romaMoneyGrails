@@ -10,12 +10,12 @@
 	<g:textField name="name" maxlength="50" required="" value="${groupCategoryInstance?.name}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: groupCategoryInstance, field: 'group_type', 'error')} required">
-	<label for="group_type">
-		<g:message code="groupCategory.group_type.label" default="Grouptype" />
+<div class="fieldcontain ${hasErrors(bean: groupCategoryInstance, field: 'groupType', 'error')} required">
+	<label for="groupType">
+		<g:message code="groupCategory.groupType.label" default="Grouptype" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="group_type" from="${groupCategoryInstance.constraints.group_type.inList}" required="" value="${groupCategoryInstance?.group_type}" valueMessagePrefix="groupCategory.group_type"/>
+	<g:select name="groupType" from="${groupCategoryInstance.constraints.groupType.inList}" required="" value="${groupCategoryInstance?.groupType}" valueMessagePrefix="groupCategory.groupType"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: groupCategoryInstance, field: 'categories', 'error')} ">

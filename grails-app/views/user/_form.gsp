@@ -7,7 +7,7 @@
 		<g:message code="user.username.label" default="Username" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="email" name="username" maxlength="50" required="" value="${userInstance?.username}"/>
+	<g:textField name="username" required="" value="${userInstance?.username}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
@@ -18,28 +18,13 @@
 	<g:textField name="password" required="" value="${userInstance?.password}"/>
 </div>
 
+<%--
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'currentAccount', 'error')} ">
 	<label for="currentAccount">
 		<g:message code="user.currentAccount.label" default="Current Account" />
 		
 	</label>
 	<g:select id="currentAccount" name="currentAccount.id" from="${br.com.romalopes.romamoneygrails.BankAccount.list()}" optionKey="id" value="${userInstance?.currentAccount?.id}" class="many-to-one" noSelection="['null': '']"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
-	<label for="accountExpired">
-		<g:message code="user.accountExpired.label" default="Account Expired" />
-		
-	</label>
-	<g:checkBox name="accountExpired" value="${userInstance?.accountExpired}" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountLocked', 'error')} ">
-	<label for="accountLocked">
-		<g:message code="user.accountLocked.label" default="Account Locked" />
-		
-	</label>
-	<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'bankAccounts', 'error')} ">
@@ -59,6 +44,22 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
+	<label for="accountExpired">
+		<g:message code="user.accountExpired.label" default="Account Expired" />
+		
+	</label>
+	<g:checkBox name="accountExpired" value="${userInstance?.accountExpired}" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountLocked', 'error')} ">
+	<label for="accountLocked">
+		<g:message code="user.accountLocked.label" default="Account Locked" />
+		
+	</label>
+	<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
 	<label for="enabled">
 		<g:message code="user.enabled.label" default="Enabled" />
@@ -75,3 +76,4 @@
 	<g:checkBox name="passwordExpired" value="${userInstance?.passwordExpired}" />
 </div>
 
+--%>

@@ -17,13 +17,13 @@
 	</label>
 	<g:textArea name="description" cols="40" rows="5" maxlength="300" value="${bankAccountInstance?.description}"/>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: bankAccountInstance, field: 'balance', 'error')} required">
+<%--
+<div class="fieldcontain ${hasErrors(bean: bankAccountInstance, field: 'balance', 'error')} ">
 	<label for="balance">
 		<g:message code="bankAccount.balance.label" default="Balance" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="balance" value="${fieldValue(bean: bankAccountInstance, field: 'balance')}" required=""/>
+	<g:field name="balance" value="${fieldValue(bean: bankAccountInstance, field: 'balance')}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: bankAccountInstance, field: 'user', 'error')} required">
@@ -50,4 +50,4 @@
 </ul>
 
 </div>
-
+--%>

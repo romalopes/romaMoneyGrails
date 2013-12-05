@@ -13,13 +13,13 @@
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<r:require modules="jquery,application"/>
+		<r:require modules="bootstrap"/>
 		<g:layoutHead/>
 		<r:layoutResources/>
 	</head>
 	<body>
 
-	<body>
-		<div id="grailsLogo" role="banner"><a class="home" href="${createLink(uri: '/')}"><img style="width:30px" src="${resource(dir: 'images', file: 'home.png')}" alt="Roma Money Grails"/></a></div>
+		<g:render template="/layouts/header" />
 		<g:if test="${controllerName != 'viewSource'}">
 		<aside>
 			<h2><g:link controller="viewSource" action="controllerAndView"
@@ -28,11 +28,20 @@
 		</g:if>
 
 		<g:layoutBody/>
+		<g:render template="/layouts/footer" />
+		<g:render template="/layouts/copywrite" />
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
 		<r:layoutResources />
 	</body>
+
+
+
+
+
+
+
 
 
 <%--		<header><g:img dir="images" file="banner-graphic.png"/></header>

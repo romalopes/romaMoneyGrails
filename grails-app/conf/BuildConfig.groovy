@@ -19,7 +19,9 @@ grails.project.dependency.resolution = {
 
         mavenLocal()
         mavenCentral()
-          mavenRepo 'http://repo.spring.io/milestone'
+        mavenRepo 'http://repo.spring.io/milestone'
+        mavenRepo "http://download.java.net/maven/2/"
+		mavenRepo "http://repo.spring.io/milestone/"
 	}
 
     dependencies {
@@ -31,6 +33,12 @@ grails.project.dependency.resolution = {
 		runtime ":jquery:1.8.0", ":jquery-ui:1.8.24"
 		runtime ":resources:1.1.6"
 		build ":tomcat:$grailsVersion"
-//		compile ':spring-security-core:2.0-RC2'
+		runtime ':twitter-bootstrap:2.3.2'
+		compile ':spring-security-core:2.0-RC2'
+        runtime ":database-migration:1.1"
+        compile ':cache:1.0.0'
+        compile ':webxml:1.4.1'
+        compile ":spring-security-ui:1.0-RC1"
+
 	}
 }

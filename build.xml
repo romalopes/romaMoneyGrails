@@ -4,7 +4,7 @@
     </description>
     <property environment="env" />
     <property name="src" location="src" />
-    <property name="webapp.dir" location="webapp" />
+    <property name="webapp.dir" location="web-app" />
     <property name="classes" location="${webapp.dir}/WEB-INF/classes" />
     <property name="lib.dir" location="lib" />
     

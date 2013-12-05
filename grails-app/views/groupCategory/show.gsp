@@ -8,7 +8,6 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-groupCategory" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -32,11 +31,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${groupCategoryInstance?.group_type}">
+				<g:if test="${groupCategoryInstance?.groupType}">
 				<li class="fieldcontain">
-					<span id="group_type-label" class="property-label"><g:message code="groupCategory.group_type.label" default="Grouptype" /></span>
+					<span id="groupType-label" class="property-label"><g:message code="groupCategory.groupType.label" default="Grouptype" /></span>
 					
-						<span class="property-value" aria-labelledby="group_type-label"><g:fieldValue bean="${groupCategoryInstance}" field="group_type"/></span>
+						<span class="property-value" aria-labelledby="groupType-label"><g:fieldValue bean="${groupCategoryInstance}" field="groupType"/></span>
 					
 				</li>
 				</g:if>

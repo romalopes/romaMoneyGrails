@@ -1,18 +1,30 @@
 package br.com.romalopes.romamoneygrails
 
-import org.springframework.dao.DataIntegrityViolationException
-
 class BankAccountController {
 
+    def springSecurityService
+
+    def generalService
+    
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
+
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
+
         params.max = Math.min(max ?: 10, 100)
-        [bankAccountInstanceList: BankAccount.list(params), bankAccountInstanceTotal: BankAccount.count()]
+        def principal = springSecurityService.getPrincipal()
+        def user = User.get(principal.id)
+
+        def query = BankAccount.where {
+                        user == user
+                    }
+
+        [bankAccountInstanceList: query.list(params), bankAccountInstanceTotal: BankAccount.count()]
+//        [bankAccountInstanceList: BankAccount.list(params), bankAccountInstanceTotal: BankAccount.count()]
     }
 
     def create() {
@@ -21,10 +33,22 @@ class BankAccountController {
 
     def save() {
         def bankAccountInstance = new BankAccount(params)
-        if (!bankAccountInstance.save(flush: true)) {
+
+        def principal = springSecurityService.getPrincipal()
+        def user = User.get(principal.id)
+
+        bankAccountInstance.user = user
+
+        user.addToBankAccounts(bankAccountInstance)
+
+        if(user.currentAccount == null) {
+            user.currentAccount = bankAccountInstance
+        }
+        if (!user.save(flush: true)) {
             render(view: "create", model: [bankAccountInstance: bankAccountInstance])
             return
         }
+        
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'bankAccount.label', default: 'BankAccount'), bankAccountInstance.id])
         redirect(action: "show", id: bankAccountInstance.id)
@@ -89,14 +113,8 @@ class BankAccountController {
             return
         }
 
-        try {
-            bankAccountInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'bankAccount.label', default: 'BankAccount'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'bankAccount.label', default: 'BankAccount'), id])
-            redirect(action: "show", id: id)
-        }
+        bankAccountInstance.delete(flush: true)
+        flash.message = message(code: 'default.deleted.message', args: [message(code: 'bankAccount.label', default: 'BankAccount'), id])
+        redirect(action: "list")
     }
 }

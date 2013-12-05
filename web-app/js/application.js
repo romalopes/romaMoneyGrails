@@ -7,3 +7,15 @@ if (typeof jQuery !== 'undefined') {
 		});
 	})(jQuery);
 }
+
+
+$('document').ready(function() {
+  $("#sendToTopPage").click(function(){
+    $(window).scrollTop(0);
+   });
+
+});
+function showDialogAddTransaction(){
+    $("#addTransaction").dialog();
+    return false;
+}

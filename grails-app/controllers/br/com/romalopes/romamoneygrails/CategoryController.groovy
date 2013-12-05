@@ -1,9 +1,5 @@
 package br.com.romalopes.romamoneygrails
 
-import grails.plugin.springsecurity.annotation.Secured;
-
-import org.springframework.dao.DataIntegrityViolationException
-
 class CategoryController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -92,14 +88,8 @@ class CategoryController {
             return
         }
 
-        try {
-            categoryInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'category.label', default: 'Category'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'category.label', default: 'Category'), id])
-            redirect(action: "show", id: id)
-        }
+        categoryInstance.delete(flush: true)
+        flash.message = message(code: 'default.deleted.message', args: [message(code: 'category.label', default: 'Category'), id])
+        redirect(action: "list")
     }
 }

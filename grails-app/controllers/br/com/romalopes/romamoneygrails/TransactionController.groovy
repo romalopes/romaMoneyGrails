@@ -1,7 +1,5 @@
 package br.com.romalopes.romamoneygrails
 
-import org.springframework.dao.DataIntegrityViolationException
-
 class TransactionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -21,7 +19,15 @@ class TransactionController {
 
     def save() {
         def transactionInstance = new Transaction(params)
-        if (!transactionInstance.save(flush: true)) {
+
+        def principal = springSecurityService.getPrincipal()
+        def user = User.get(principal.id)
+
+        assert(user && user.currentAccount)
+
+        user.currentAccount.addToTransactions(transactionInstance)
+
+        if (!user.currentAccount.save(flush: true)) {
             render(view: "create", model: [transactionInstance: transactionInstance])
             return
         }
@@ -89,14 +95,8 @@ class TransactionController {
             return
         }
 
-        try {
-            transactionInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'transaction.label', default: 'Transaction'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'transaction.label', default: 'Transaction'), id])
-            redirect(action: "show", id: id)
-        }
+        transactionInstance.delete(flush: true)
+        flash.message = message(code: 'default.deleted.message', args: [message(code: 'transaction.label', default: 'Transaction'), id])
+        redirect(action: "list")
     }
 }

@@ -1,7 +1,5 @@
 package br.com.romalopes.romamoneygrails
 
-import org.springframework.dao.DataIntegrityViolationException
-
 class GroupCategoryController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -89,14 +87,8 @@ class GroupCategoryController {
             return
         }
 
-        try {
-            groupCategoryInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'groupCategory.label', default: 'GroupCategory'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'groupCategory.label', default: 'GroupCategory'), id])
-            redirect(action: "show", id: id)
-        }
+        groupCategoryInstance.delete(flush: true)
+        flash.message = message(code: 'default.deleted.message', args: [message(code: 'groupCategory.label', default: 'GroupCategory'), id])
+        redirect(action: "list")
     }
 }
