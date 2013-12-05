@@ -9,10 +9,10 @@
             <i class="fa btn-mini fa-twitter"></i>Twitter</a>
           <a href="http://facebook.com/romalopes" title="Follow me on facebook" target="_blank">
             <i class="fa btn-mini fa-facebook"></i>Facebook</a>
-          <a href="http://github.com/romalopes/romaMoneyRails" title="Access project on Github" target="_blank">
+          <a href="http://github.com/romalopes/romaMoneyGrails" title="Access project on Github" target="_blank">
             <i class="fa btn-mini fa-github"></i>Github</a>
           
-          <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1384205748.html#_=1384487896697&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fnoizwaves.github.io%2Fromalopes%2FromaMoneyRails%2F&amp;related=romalopes&amp;size=m&amp;text=Roma%20Money%20Rails&amp;url=http%3A%2F%2Fromalopes.blogspot.com&amp;via=romalopes" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 100px; height: 20px;"></iframe>
+          <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1384205748.html#_=1384487896697&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fnoizwaves.github.io%2Fromalopes%2FromaMoneyGrails%2F&amp;related=romalopes&amp;size=m&amp;text=Roma%20Money%20Grails&amp;url=http%3A%2F%2Fromalopes.blogspot.com&amp;via=romalopes" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 100px; height: 20px;"></iframe>
           
           <iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.1384205748.html#_=1384487896706&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=romalopes&amp;show_count=false&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 162px; height: 20px;"></iframe>
             

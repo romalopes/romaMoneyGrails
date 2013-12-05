@@ -6,7 +6,7 @@
           <h3>Links</h3>
           <ul>
             <li><a href="/">Main project</a></li>
-            <li><a target="_blank" href="http://github.com/romalopes/romaMoneyRails">Github</a></li>
+            <li><a target="_blank" href="http://github.com/romalopes/romaMoneyGrails">Github</a></li>
             <li><a target="_blank" href="http://romalopes.blogspot.com">Blog</a></li>
           </ul>
         </div>
