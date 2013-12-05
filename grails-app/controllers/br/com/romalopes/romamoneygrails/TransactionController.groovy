@@ -1,6 +1,10 @@
 package br.com.romalopes.romamoneygrails
 
+import br.com.romalopes.romamoneygrails.GeneralService;
+
 class TransactionController {
+
+    def generalService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -20,8 +24,7 @@ class TransactionController {
     def save() {
         def transactionInstance = new Transaction(params)
 
-        def principal = springSecurityService.getPrincipal()
-        def user = User.get(principal.id)
+        def user = generalService.getCurrentUser()
 
         assert(user && user.currentAccount)
 

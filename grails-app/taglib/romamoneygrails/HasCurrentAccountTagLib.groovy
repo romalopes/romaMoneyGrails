@@ -10,12 +10,9 @@ class HasCurrentAccountTagLib {
 
  	StringBuilder sb = new StringBuilder()
 
-	sb << """
-		<li><a href="transaction/list" class="list">${message(code: 'transaction.label', default: 'transaction')}</a</li>						
-		"""
 	out << ""
 	if(generalService.getCurrentAccount())
-		out << sb.toString()
+		out << body()
 		//out << "// + romaMoneyGrailsService.getCurrentAccount()
 	}
 }

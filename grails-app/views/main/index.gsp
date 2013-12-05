@@ -50,9 +50,7 @@
 							<li><g:link class="list" controller="groupCategory" action="list">${message(code: 'groupCategpry.label', default: 'groupCategpry')}</g:link></li>
 --%>							
 						<g:hasCurrentAccount>
-<%--						
 							<li><g:link class="list" controller="transaction" action="list">${message(code: 'transaction.label', default: 'transaction')}</g:link></li>						
---%>							
 						</g:hasCurrentAccount>
 							<sec:ifAnyGranted roles="ROLE_ADMIN">
 								<li><g:link class="list" controller="user" action="list">${message(code: 'user.label', default: 'User')}</g:link></li>
