@@ -7,11 +7,11 @@ class GeneralService {
 
 	def getCurrentUser() {
 		def principal = springSecurityService.getPrincipal()
-        return User.get(principal.id)
+        return SecUser.get(principal.id)
     }
 
     def getCurrentAccount() {
-    	User user = getCurrentUser()
+    	SecUser user = getCurrentUser()
     	if(!user)
     		return null;
     	return user.currentAccount

@@ -52,7 +52,7 @@ environments {
             }
         }
     }
-/*Heroku    
+//*Heroku    
     production {
         dataSource {
             dbCreate = "update"
@@ -66,9 +66,9 @@ environments {
             password = uri.userInfo.split(":")[1]
         }
     }
-*/    
+/*/    
     
-///*  Bees
+/*  Bees
 	production {
         dataSource {
             dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'

@@ -70,9 +70,9 @@ log4j = {
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.auth.loginFormUrl = '/'
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'br.com.romalopes.romamoneygrails.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'br.com.romalopes.romamoneygrails.UserRole'
-grails.plugin.springsecurity.authority.className = 'br.com.romalopes.romamoneygrails.Role'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'br.com.romalopes.romamoneygrails.SecUser'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'br.com.romalopes.romamoneygrails.SecUserRole'
+grails.plugin.springsecurity.authority.className = 'br.com.romalopes.romamoneygrails.SecRole'
 grails.plugin.springsecurity.roleHierarchy = '''
     ROLE_SUPER_ADMIN > ROLE_ADMIN
     ROLE_ADMIN >  ROLE_USER
@@ -95,8 +95,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/category/*':			  	  ['ROLE_USER'],
 	'/**/transaction/*':			  ['ROLE_USER'],
 	'/**/bankaccount/*':	  		  ['ROLE_USER'],
-	'/**/user/*':			  		  ['ROLE_ADMIN', 'ROLE_USER'],	
-	'/user/**':              		  ['ROLE_ADMIN']
+	'/**/secuser/*':		  		  ['ROLE_ADMIN', 'ROLE_USER'],	
+	'/secuser/**':             		  ['ROLE_ADMIN']
 ]
-
 

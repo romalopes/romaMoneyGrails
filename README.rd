@@ -45,3 +45,4 @@ Continuous Integration
 To be done
     
 
+git remote add heroku git@heroku.com:romamoneygrails.git

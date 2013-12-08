@@ -49,11 +49,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${bankAccountInstance?.user}">
+				<g:if test="${bankAccountInstance?.secUser}">
 				<li class="fieldcontain">
 					<span id="user-label" class="property-label"><g:message code="bankAccount.user.label" default="User" /></span>
 					
-						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${bankAccountInstance?.user?.id}">${bankAccountInstance?.user?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="secUser" action="show" id="${bankAccountInstance?.secUser?.id}">${bankAccountInstance?.secUser?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

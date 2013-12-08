@@ -3,12 +3,12 @@ import org.grails.samples.Speciality
 import org.grails.samples.Vet
 
 import br.com.romalopes.romamoneygrails.BankAccount
-import br.com.romalopes.romamoneygrails.User
+import br.com.romalopes.romamoneygrails.SecUser
 import br.com.romalopes.romamoneygrails.GroupCategory
 import br.com.romalopes.romamoneygrails.Category
 
-import br.com.romalopes.romamoneygrails.Role
-import br.com.romalopes.romamoneygrails.UserRole
+import br.com.romalopes.romamoneygrails.SecRole
+import br.com.romalopes.romamoneygrails.SecUserSecRole
 
 class BootStrap {
 
@@ -23,41 +23,39 @@ class BootStrap {
 
 	def makeUsers(){
 
-		def roleAdmin = new Role(authority: 'ROLE_ADMIN')
+		if(SecUser.count() > 0)
+			return;
+		def roleAdmin = new SecRole(authority: 'ROLE_ADMIN')
 		if(!roleAdmin.save(flush: true))
 		{
 				log.error "Could not save roleAdmin!!"
 				log.error "${roleAdmin.errors}"
 		}
 
-		def roleUser = new Role(authority: 'ROLE_USER')
+		def roleUser = new SecRole(authority: 'ROLE_USER')
 		if(!roleUser.save(flush: true))
 		{
 				log.error "Could not save roleUser!!"
 				log.error "${roleUser.errors}"
 		}
 
-		if(User.count() == 0) {
-			def testUser = new User(username: 'romalopes@yahoo.com.br', password: 'password')
-			if(!testUser.save(flush: true)) 
-			{
-				log.error "Could not save testUser!!"
-				log.error "${testUser.errors}"
-			}
-
-
-		
-			UserRole.create testUser , roleAdmin, true
-
-			testUser = new User(username:"romalopes@gmail.com", password: 'foobar')
-			testUser.save()
-
-			UserRole.create testUser , roleUser, true
-
-			testUser = new User(username:"romalopes2@gmail.com", password: 'foobar')
-			testUser.save()				
-			UserRole.create testUser , roleUser, true
+		def testUser = new SecUser(username: 'romalopes@yahoo.com.br', password: 'password')
+		if(!testUser.save(flush: true)) 
+		{
+			log.error "Could not save testUser!!"
+			log.error "${testUser.errors}"
 		}
+	
+		SecUserSecRole.create testUser , roleAdmin, true
+
+		testUser = new SecUser(username:"romalopes@gmail.com", password: 'foobar')
+		testUser.save()
+
+		SecUserSecRole.create testUser , roleUser, true
+
+		testUser = new SecUser(username:"romalopes2@gmail.com", password: 'foobar')
+		testUser.save()				
+		SecUserSecRole.create testUser , roleUser, true
 	}
 
 	def makeAccounts() {

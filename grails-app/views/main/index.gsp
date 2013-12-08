@@ -26,7 +26,7 @@
             <CENTER>
               <h3>Welcome to the Roma Money Grails</h3><br>
               <g:link controller="login" action="auth" class="home btn btn-large btn-primary"><g:message code="default.login.label"/></g:link>
-              <g:link controller="user" action="create" class="home btn btn-large btn-primary"><g:message code="default.signup.label"/></g:link>
+              <g:link controller="secUser" action="create" class="home btn btn-large btn-primary"><g:message code="default.signup.label"/></g:link>
               
               </CENTER>
             </div>
@@ -51,9 +51,9 @@
             <g:hasCurrentAccount>
               <li><g:link class="list" controller="transaction" action="list">${message(code: 'transaction.label', default: 'transaction')}</g:link></li>            
             </g:hasCurrentAccount>
-              <sec:ifAnyGranted roles="ROLE_ADMIN">
-                <li><g:link class="list" controller="user" action="list">${message(code: 'user.label', default: 'User')}</g:link></li>
-              </sec:ifAnyGranted>
+            <sec:ifAnyGranted roles="ROLE_ADMIN">
+                <li><g:link class="list" controller="secUser" action="list">${message(code: 'secuser.label', default: 'User')}</g:link></li>
+            </sec:ifAnyGranted>
 
             </ul>
   <%--        <ul>

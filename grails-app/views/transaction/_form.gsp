@@ -41,7 +41,7 @@
 	</label>
 	<g:select id="category" name="category.id" from="${br.com.romalopes.romamoneygrails.Category.list()}" optionKey="id" required="" value="${transactionInstance?.category?.id}" class="many-to-one"/>
 </div>
-
+<%--
 <div class="fieldcontain ${hasErrors(bean: transactionInstance, field: 'bankAccount', 'error')} required">
 	<label for="bankAccount">
 		<g:message code="transaction.bankAccount.label" default="Bank Account" />
@@ -49,4 +49,4 @@
 	</label>
 	<g:select id="bankAccount" name="bankAccount.id" from="${br.com.romalopes.romamoneygrails.BankAccount.list()}" optionKey="id" required="" value="${transactionInstance?.bankAccount?.id}" class="many-to-one"/>
 </div>
-
+--%>

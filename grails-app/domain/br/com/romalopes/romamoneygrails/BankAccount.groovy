@@ -8,19 +8,23 @@ class BankAccount {
 	BigDecimal balance
 	Date dateCreated // Nome predefinido pelo Grails a ser preenchido automaticamente
 	
-	User user
+	SecUser secUser
 	List transactions
 	// Certify that Account  will be deleted if a User is deleted Cascade
-	static belongsTo=[user:User]
+	static belongsTo=[secUser:SecUser]
 	static hasMany=[transactions:Transaction]
 	
     static constraints = {
-		name(blank:false, nullable: false, size:6..50)
+		name(blank:false, nullable: false, size:2..50)
 		description(nullable:true, blank:true, maxSize:300)
         balance(nullable:true)  
-        user(nullable:false)  
+        secUser(nullable:false)  
     }  
     String toString(){  
           return name  
     }  
+
+    def getUser(){
+    	return user
+    }
 }

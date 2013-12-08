@@ -17,10 +17,10 @@ class BankAccountController {
 
         params.max = Math.min(max ?: 10, 100)
         def principal = springSecurityService.getPrincipal()
-        def user = User.get(principal.id)
+        def user = SecUser.get(principal.id)
 
         def query = BankAccount.where {
-                        user == user
+                        secUser == user
                     }
 
         [bankAccountInstanceList: query.list(params), bankAccountInstanceTotal: BankAccount.count()]
@@ -35,9 +35,9 @@ class BankAccountController {
         def bankAccountInstance = new BankAccount(params)
 
         def principal = springSecurityService.getPrincipal()
-        def user = User.get(principal.id)
+        def user = SecUser.get(principal.id)
 
-        bankAccountInstance.user = user
+        bankAccountInstance.secUser = user
 
         user.addToBankAccounts(bankAccountInstance)
 

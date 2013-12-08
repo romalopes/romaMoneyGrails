@@ -45,7 +45,7 @@
 					
 						<td>${fieldValue(bean: bankAccountInstance, field: "balance")}</td>
 					
-						<td>${fieldValue(bean: bankAccountInstance, field: "user")}</td>
+						<td>${fieldValue(bean: bankAccountInstance, field: "secUser")}</td>
 					
 						<td><g:formatDate date="${bankAccountInstance.dateCreated}" /></td>
 					
