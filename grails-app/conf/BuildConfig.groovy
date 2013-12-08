@@ -1,4 +1,4 @@
-grails.server.port.http = 8090
+//grails.server.port.http = 8090
 grails.servlet.version = "2.5"
 grails.project.work.dir = "target/$grailsVersion"
 grails.project.target.level = 1.6
